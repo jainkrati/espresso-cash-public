@@ -122,12 +122,13 @@ packages:
     source: hosted
     version: "2.1.1"
   borsh_annotation:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "../borsh_annotation"
-      relative: true
-    source: path
-    version: "0.3.1+1"
+      name: borsh_annotation
+      sha256: f9e21b2229cb68b4f2317c99bd8c8401807a12f3b3d351e5e4db94f315924f0d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1+2"
   build:
     dependency: transitive
     description:
@@ -934,26 +935,26 @@ packages:
     dependency: "direct main"
     description:
       name: intercom_flutter
-      sha256: b6c967a3690555be66218410903d71487cb9a697143827280470d45ca2b75ed3
+      sha256: f7c1ae95d1df9cfbd831dd447fd9c47b8a0e9e2db328b5ca0dc6004a03ed3aee
       url: "https://pub.dev"
     source: hosted
-    version: "7.6.2"
+    version: "7.6.3+1"
   intercom_flutter_platform_interface:
     dependency: transitive
     description:
       name: intercom_flutter_platform_interface
-      sha256: c7dfe0fac083fa0f74c7438420f709d9e44e9f20497ff2de0dcafdd246c2f516
+      sha256: c898c8cd5fbdb7dbfa281947ad049cebf867b54e296af8996237e6ca4d2734e0
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   intercom_flutter_web:
     dependency: transitive
     description:
       name: intercom_flutter_web
-      sha256: "92c435b30067ca00c46987b146abc2e92f170723b7b9f3d9ce49b2df7684fae1"
+      sha256: "5362e025637bc1c959aeb2f88e08a52f69c05edc54d139ab121a39fbd86fa392"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.1"
+    version: "0.2.2"
   intl:
     dependency: "direct main"
     description:
@@ -995,12 +996,12 @@ packages:
     source: hosted
     version: "6.5.4"
   jupiter_aggregator:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       path: "../cryptoplease_link/jupiter_aggregator"
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.4"
   logging:
     dependency: "direct main"
     description:
@@ -1353,6 +1354,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  ramp_flutter:
+    dependency: "direct main"
+    description:
+      name: ramp_flutter
+      sha256: "38c8c240fafceff36934e70c7cac8403a8aafdb7faa1ce51b759874c323cb432"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   rational:
     dependency: transitive
     description:
@@ -1524,7 +1533,7 @@ packages:
       path: "../solana"
       relative: true
     source: path
-    version: "0.26.3"
+    version: "0.26.4"
   source_gen:
     dependency: transitive
     description:
