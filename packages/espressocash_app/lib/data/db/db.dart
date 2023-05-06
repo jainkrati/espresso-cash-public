@@ -10,6 +10,7 @@ import '../../features/outgoing_direct_payments/db.dart';
 import '../../features/outgoing_split_key_payments/db.dart';
 import '../../features/payment_request/db.dart';
 import '../../features/popular_tokens/db.dart';
+import '../../features/ramp/db.dart';
 import '../../features/swap/db.dart';
 import 'deprecated.dart';
 import 'open_connection.dart';
@@ -25,7 +26,7 @@ class OutgoingTransferRows extends Table {
   Set<Column<Object>>? get primaryKey => {id};
 }
 
-const int latestVersion = 36;
+const int latestVersion = 37;
 
 const _tables = [
   OutgoingTransferRows,
@@ -39,6 +40,7 @@ const _tables = [
   PopularTokenRows,
   OTRows,
   ITRows,
+  ORPRows,
 ];
 
 @lazySingleton
@@ -148,6 +150,9 @@ class MyDatabase extends _$MyDatabase {
           }
           if (from < 36) {
             await m.deleteTable('i_s_l_p_rows');
+          }
+          if (from < 37) {
+            await m.createTable(oRPRows);
           }
         },
       );

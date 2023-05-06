@@ -10,6 +10,7 @@ import '../../../features/outgoing_direct_payments/routes.dart';
 import '../../../features/outgoing_split_key_payments/routes.dart';
 import '../../../features/payment_request/routes.dart';
 import '../../../features/qr_scanner/routes.dart';
+import '../../../features/ramp/routes.dart';
 import '../../../features/swap/routes.dart';
 import '../../../features/token_details/widgets/token_details_screen.dart';
 import '../../../features/token_search/routes.dart';
@@ -58,5 +59,6 @@ const authenticatedFlowRoutes = AutoRoute<dynamic>(
     onboardingFlowRoutes,
     mobileWalletRoutes,
     AutoRoute<void>(page: WebViewScreen),
+    ...rampRoutes,
   ],
 );
