@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ramp_flutter/ramp_flutter.dart';
 
 import '../../../../core/cancelable_job.dart';
 import '../../../../core/transactions/tx_sender.dart';
@@ -21,7 +22,7 @@ class TxSentWatcher extends PaymentWatcher {
   CancelableJob<OffRampPayment> createJob(
     OffRampPayment payment,
   ) =>
-      _ORPTxSentJob(payment, _sender);
+      _ORPTxSentJob(payment, _sender, RampFlutter());
 
   @override
   Stream<IList<OffRampPayment>> watchPayments(
@@ -31,10 +32,11 @@ class TxSentWatcher extends PaymentWatcher {
 }
 
 class _ORPTxSentJob extends CancelableJob<OffRampPayment> {
-  _ORPTxSentJob(this.payment, this.sender);
+  _ORPTxSentJob(this.payment, this.sender, this.ramp);
 
   final OffRampPayment payment;
   final TxSender sender;
+  final RampFlutter ramp;
 
   @override
   Future<OffRampPayment?> process() async {
@@ -53,6 +55,10 @@ class _ORPTxSentJob extends CancelableJob<OffRampPayment> {
 
     if (newStatus == null) {
       return null;
+    }
+
+    if (newStatus is ORPStatusSuccess) {
+      await ramp.sendCrypto(newStatus.txId);
     }
 
     return payment.copyWith(status: newStatus);
