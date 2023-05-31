@@ -25,7 +25,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:solana/encoder.dart';
 import 'package:solana/solana.dart';
 
-import 'service_test.mocks.dart';
+import 'oskp_service_test.mocks.dart';
 
 final sender = MockTxSender();
 final client = MockCryptopleaseClient();
