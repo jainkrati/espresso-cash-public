@@ -1,12 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../l10n/l10n.dart';
 import '../../../../../ui/colors.dart';
 import '../../../../legal/flow.dart';
 
 class TermsDisclaimer extends StatelessWidget {
-  const TermsDisclaimer({Key? key}) : super(key: key);
+  const TermsDisclaimer({super.key});
 
   @override
   Widget build(BuildContext context) => Text.rich(
@@ -32,7 +33,7 @@ class TermsDisclaimer extends StatelessWidget {
             ),
           ],
           style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                fontSize: 14,
+                fontSize: 14.sp,
                 height: 1.1,
                 fontWeight: FontWeight.w500,
               ),

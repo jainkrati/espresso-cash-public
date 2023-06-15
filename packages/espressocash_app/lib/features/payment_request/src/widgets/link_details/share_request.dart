@@ -15,8 +15,9 @@ import '../../bl/repository.dart';
 import 'components/share_link.dart';
 import 'components/share_qr_code.dart';
 
+@RoutePage()
 class SharePaymentRequestScreen extends StatelessWidget {
-  const SharePaymentRequestScreen({Key? key}) : super(key: key);
+  const SharePaymentRequestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

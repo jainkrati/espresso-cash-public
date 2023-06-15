@@ -17,11 +17,12 @@ import '../../bl/payment_request_verifier/bloc.dart';
 import '../../bl/repository.dart';
 import 'tx_result_screen.dart';
 
+@RoutePage()
 class LinkDetailsFlowScreen extends StatefulWidget {
   const LinkDetailsFlowScreen({
-    Key? key,
+    super.key,
     required this.id,
-  }) : super(key: key);
+  });
 
   final String id;
 
@@ -70,7 +71,7 @@ class _LinkDetailsFlowScreenState extends State<LinkDetailsFlowScreen> {
 }
 
 class _Loader extends StatelessWidget {
-  const _Loader({Key? key}) : super(key: key);
+  const _Loader();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -82,10 +83,7 @@ class _Loader extends StatelessWidget {
 }
 
 class _Success extends StatelessWidget {
-  const _Success({
-    Key? key,
-    required this.request,
-  }) : super(key: key);
+  const _Success({required this.request});
 
   final PaymentRequest request;
 
@@ -102,9 +100,8 @@ class _Success extends StatelessWidget {
 
 class _Failure extends StatelessWidget {
   const _Failure({
-    Key? key,
     required this.request,
-  }) : super(key: key);
+  });
 
   final PaymentRequest request;
 

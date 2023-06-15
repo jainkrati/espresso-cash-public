@@ -32,7 +32,7 @@ class TxSentWatcher extends PaymentWatcher {
 }
 
 class _OSKPSentJob extends CancelableJob<OutgoingSplitKeyPayment> {
-  _OSKPSentJob(this.payment, this.sender);
+  const _OSKPSentJob(this.payment, this.sender);
 
   final OutgoingSplitKeyPayment payment;
   final TxSender sender;
@@ -51,15 +51,9 @@ class _OSKPSentJob extends CancelableJob<OutgoingSplitKeyPayment> {
       failure: (tx) => OSKPStatus.txFailure(reason: tx.reason),
       networkError: (_) {
         Sentry.addBreadcrumb(Breadcrumb(message: 'Network error'));
-
-        return null;
       },
     );
 
-    if (newStatus == null) {
-      return null;
-    }
-
-    return payment.copyWith(status: newStatus);
+    return newStatus == null ? null : payment.copyWith(status: newStatus);
   }
 }

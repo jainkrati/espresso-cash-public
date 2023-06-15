@@ -33,8 +33,9 @@ class HomeRouterKey {
   final GlobalKey<AutoRouterState> value;
 }
 
+@RoutePage()
 class AuthenticatedFlowScreen extends StatefulWidget {
-  const AuthenticatedFlowScreen({Key? key}) : super(key: key);
+  const AuthenticatedFlowScreen({super.key});
 
   @override
   State<AuthenticatedFlowScreen> createState() =>
@@ -70,7 +71,6 @@ class _AuthenticatedFlowScreenState extends State<AuthenticatedFlowScreen> {
                 ),
                 const ODPModule(),
                 const OSKPModule(),
-                const ISKPModule(),
                 const InvestmentModule(),
                 const ActivitiesModule(),
                 const FavoriteTokensModule(),
@@ -80,7 +80,15 @@ class _AuthenticatedFlowScreenState extends State<AuthenticatedFlowScreen> {
                 OnboardingModule(mnemonic: mnemonic),
                 const ORPModule(),
               ],
-              child: AutoRouter(key: _homeRouterKey),
+              child: AutoRouter(
+                key: _homeRouterKey,
+                builder: (context, child) => MultiProvider(
+                  providers: const [
+                    ISKPModule(),
+                  ],
+                  child: child,
+                ),
+              ),
             );
           },
         ),

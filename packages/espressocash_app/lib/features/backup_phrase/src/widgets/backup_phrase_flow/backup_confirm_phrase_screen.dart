@@ -11,11 +11,12 @@ import '../../../../../ui/theme.dart';
 import 'backup_phrase_flow_screen.dart';
 import 'components/grid_phrase.dart';
 
+@RoutePage()
 class BackupConfirmPhraseScreen extends StatefulWidget {
   const BackupConfirmPhraseScreen({
-    Key? key,
+    super.key,
     required this.correctPhrase,
-  }) : super(key: key);
+  });
 
   final String correctPhrase;
 

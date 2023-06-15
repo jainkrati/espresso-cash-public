@@ -33,7 +33,7 @@ class TxCreatedWatcher extends PaymentWatcher {
 }
 
 class _ISKPTxCreatedJob extends CancelableJob<IncomingSplitKeyPayment> {
-  _ISKPTxCreatedJob(this.payment, this.sender);
+  const _ISKPTxCreatedJob(this.payment, this.sender);
 
   final IncomingSplitKeyPayment payment;
   final TxSender sender;
@@ -58,15 +58,9 @@ class _ISKPTxCreatedJob extends CancelableJob<IncomingSplitKeyPayment> {
       failure: (it) => ISKPStatus.txFailure(reason: it.reason),
       networkError: (_) {
         Sentry.addBreadcrumb(Breadcrumb(message: 'Network error'));
-
-        return null;
       },
     );
 
-    if (newStatus == null) {
-      return null;
-    }
-
-    return payment.copyWith(status: newStatus);
+    return newStatus == null ? null : payment.copyWith(status: newStatus);
   }
 }

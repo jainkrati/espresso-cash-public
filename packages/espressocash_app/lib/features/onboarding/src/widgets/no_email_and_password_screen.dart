@@ -9,8 +9,9 @@ import '../../../../ui/onboarding_screen.dart';
 import '../../../../ui/theme.dart';
 import 'onboarding_flow_screen.dart';
 
+@RoutePage()
 class NoEmailAndPasswordScreen extends StatelessWidget {
-  const NoEmailAndPasswordScreen({Key? key}) : super(key: key);
+  const NoEmailAndPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) => CpTheme.dark(

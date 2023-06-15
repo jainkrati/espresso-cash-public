@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solana_seed_vault/solana_seed_vault.dart';
 
 import '../../../../di.dart';
@@ -14,6 +16,7 @@ import '../bl/sign_in_bloc.dart';
 import 'components/terms_disclaimer.dart';
 import 'sign_in_flow_screen.dart';
 
+@RoutePage()
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key, required this.isSaga});
 
@@ -32,7 +35,7 @@ class GetStartedScreen extends StatelessWidget {
                 ),
               ),
               SafeArea(
-                top: false,
+                minimum: EdgeInsets.only(top: 70.h),
                 child: LayoutBuilder(
                   builder: (context, constraints) => SingleChildScrollView(
                     child: ConstrainedBox(
@@ -44,6 +47,7 @@ class GetStartedScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             const _Header(),
+                            32.verticalSpace,
                             const _Body(),
                             Expanded(child: _Footer(isSaga: isSaga)),
                           ],
@@ -60,36 +64,34 @@ class GetStartedScreen extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({Key? key}) : super(key: key);
+  const _Header();
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 24),
-        child: Column(
-          children: [
-            Assets.images.logo.image(height: 110, width: 210),
-          ],
-        ),
+  Widget build(BuildContext context) => Column(
+        children: [
+          Assets.images.logo.image(width: 201.r, height: 43.r),
+        ],
       );
 }
 
 class _Footer extends StatelessWidget {
-  const _Footer({Key? key, required this.isSaga}) : super(key: key);
+  const _Footer({required this.isSaga});
 
   final bool isSaga;
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 44.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const SizedBox(height: 8),
-            if (isSaga)
-              const _SignInWithSagaButton()
-            else ...[
+            8.verticalSpace,
+            if (isSaga) ...[
+              const _SignInWithSagaButton(),
+              37.verticalSpace,
+            ] else ...[
               const _CreateLocalWalletButton(),
-              const SizedBox(height: 16),
+              19.verticalSpace,
               Text.rich(
                 key: keyUseExistingWalletButton,
                 TextSpan(
@@ -99,24 +101,19 @@ class _Footer extends StatelessWidget {
                       text: context.l10n.signIn2,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () => context.signInRouter.onSignIn(),
-                      style: const TextStyle(
-                        color: CpColors.yellowColor,
-                      ),
+                      style: const TextStyle(color: CpColors.yellowColor),
                     ),
                   ],
                 ),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
               ),
             ],
-            const SizedBox(height: 34),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: TermsDisclaimer(),
+            67.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 19.w),
+              child: const TermsDisclaimer(),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 12.h),
           ],
         ),
       );
@@ -163,23 +160,23 @@ class _SignInWithSagaButtonState extends State<_SignInWithSagaButton> {
 }
 
 class _Body extends StatelessWidget {
-  const _Body({Key? key}) : super(key: key);
+  const _Body();
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24),
+        padding: EdgeInsets.only(left: 30.w, right: 25.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               context.l10n.onboardingIntro.toUpperCase(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w900,
-                fontSize: 45,
+                fontSize: 46.sp,
                 height: 0.9,
               ),
             ),
-            const SizedBox(height: 8),
+            128.verticalSpace,
             CpBulletItemWidget(text: context.l10n.onboardingBullet),
           ],
         ),

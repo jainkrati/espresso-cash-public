@@ -17,9 +17,9 @@ import 'extensions.dart';
 
 class AddCashButton extends StatelessWidget {
   const AddCashButton({
-    Key? key,
+    super.key,
     this.size = CpButtonSize.normal,
-  }) : super(key: key);
+  });
 
   final CpButtonSize size;
 
@@ -47,9 +47,9 @@ class AddCashButton extends StatelessWidget {
 
 class CashOutButton extends StatefulWidget {
   const CashOutButton({
-    Key? key,
+    super.key,
     this.size = CpButtonSize.normal,
-  }) : super(key: key);
+  });
 
   final CpButtonSize size;
 
