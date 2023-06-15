@@ -15,6 +15,7 @@ import '../../../../ui/button.dart';
 import '../../../../ui/number_formatter.dart';
 import '../../../../ui/theme.dart';
 
+@RoutePage()
 class OffRampConfirmationScreen extends StatefulWidget {
   const OffRampConfirmationScreen({
     super.key,

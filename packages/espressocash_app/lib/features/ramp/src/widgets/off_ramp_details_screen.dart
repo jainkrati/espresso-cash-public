@@ -17,6 +17,7 @@ import '../../models/off_ramp_payment.dart';
 import '../../widgets/extensions.dart';
 import '../bl/repository.dart';
 
+@RoutePage()
 class OffRampDetailsScreen extends StatefulWidget {
   const OffRampDetailsScreen({super.key, required this.id});
 
